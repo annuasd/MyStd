@@ -1,0 +1,46 @@
+# 编译生成文件和目录
+build/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# IDE相关文件
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# CMake生成文件
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.ninja
+
+# 依赖目录
+third_party/
+external/
+
+# 日志文件
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 测试相关
+*.out
+*.test
+
+# 临时文件
+*.swp
+*.swo
+*~
+
+# 编译数据库
+compile_commands.json
