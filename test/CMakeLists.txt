@@ -2,7 +2,7 @@ enable_testing()
 
 
 # 递归搜索当前目录下所有的C++源文件
-file(GLOB_RECURSE TEST_SOURCES "*.cpp")
+file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "*.cpp")
 
 add_executable(unittest ${TEST_SOURCES})
 target_link_libraries(

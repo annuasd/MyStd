@@ -40,14 +40,12 @@ struct A {
     other.i = 0;
   }
   A &operator=(const A &other) {
-    std::cerr << "= copy\n";
     if (this != &other) {
       i = other.i;
     }
     return *this;
   }
   A &operator=(A &&other) {
-    std::cerr << "= move\n";
     if (this != &other) {
       i = other.i;
       other.i = 0;
@@ -55,7 +53,7 @@ struct A {
     return *this;
   }
 
-  ~A() { std::cerr << "desctr\n"; }
+  ~A() {}
 };
 
 TEST(Variant, Construct) {
@@ -63,11 +61,7 @@ TEST(Variant, Construct) {
   Ty a(12);
   Ty b(3.2f);
   EXPECT_TRUE(a.get<A>().i == 12);
-  try {
-    b.get<A>();
-  } catch (const std::exception &e) {
-    EXPECT_TRUE(e.what() == std::string("bad variant access"));
-  }
+  EXPECT_THROW(b.get<A>(), BadVariantAccess);
 }
 TEST(Variant, Copy) {
   using Ty = Variant<A>;
